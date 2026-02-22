@@ -345,7 +345,7 @@ ai:
   # 使用 LongCat API（OpenAI 兼容格式）
   # 每日免费额度：500,000 Tokens
   
-  model: "openai/LongCat-Flash-Chat"
+  model: "openai/LongCat-Flash-Thinking-2601"
 
   api_key: "ak_2xI5fW0hi7XH2KM90F6nd7LY4268i"
   
