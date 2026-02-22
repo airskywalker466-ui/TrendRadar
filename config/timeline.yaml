@@ -394,10 +394,10 @@ custom:
 
   default:
     collect: true                  # 全天采集数据
-    analyze: false                 # 默认不做 AI 分析
+    analyze: true                  # 默认启用 AI 分析
     ai_mode: "daily"
-    push: false                    # 默认不推送
-    report_mode: "current"
+    push: true                     # 默认启用推送（手动触发也能推送）
+    report_mode: "daily"           # 当日汇总模式
     once:
       analyze: true
       push: true
@@ -407,7 +407,7 @@ custom:
     evening_push:
       name: "晚间推送"
       start: "20:00"
-      end: "21:00"                 # 20:00-21:00 时间窗口，确保 20:30 能触发
+      end: "21:00"                 # 20:00-21:00 时间窗口
       analyze: true                # AI 分析全天内容
       ai_mode: "daily"             # 汇总全天新闻
       push: true                   # 推送通知
