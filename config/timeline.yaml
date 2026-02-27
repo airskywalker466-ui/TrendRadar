@@ -389,45 +389,57 @@ presets:
 #     其余时间走默认配置（静默采集）
 
 custom:
-  name: "每日晚间推送"
-  description: "每日 20:30 推送当日热点汇总，AI 分析全天内容。"
+  name: "每日推送（下午+晚间）"
+  description: "每日下午 14:00 和晚上 20:00 推送当日热点汇总。"
 
   default:
-    collect: true                  # 全天采集数据
-    analyze: true                  # 默认启用 AI 分析
-    ai_mode: "daily"
-    push: true                     # 默认启用推送（手动触发也能推送）
-    report_mode: "daily"           # 当日汇总模式
+    collect: true
+    analyze: false
+    ai_mode: "current"
+    push: false
+    report_mode: "current"
     once:
-      analyze: true
-      push: true
+      analyze: false
+      push: false
 
   periods:
+
+    afternoon_push:
+      name: "下午推送"
+      start: "14:00"
+      end: "15:00"
+      analyze: true
+      ai_mode: "current"
+      push: true
+      report_mode: "current"
+      once:
+        analyze: true
+        push: true
 
     evening_push:
       name: "晚间推送"
       start: "20:00"
-      end: "21:00"                 # 20:00-21:00 时间窗口
-      analyze: true                # AI 分析全天内容
-      ai_mode: "daily"             # 汇总全天新闻
-      push: true                   # 推送通知
-      report_mode: "daily"         # 当日全部新闻汇总
+      end: "21:00"
+      analyze: true
+      ai_mode: "daily"
+      push: true
+      report_mode: "daily"
       once:
-        analyze: true              # 只分析一次
-        push: true                 # 只推送一次
+        analyze: true
+        push: true
 
   day_plans:
     all_day:
-      periods: ["evening_push"]
+      periods: ["afternoon_push", "evening_push"]
 
   week_map:
-    1: "all_day"                   # 周一
-    2: "all_day"                   # 周二
-    3: "all_day"                   # 周三
-    4: "all_day"                   # 周四
-    5: "all_day"                   # 周五
-    6: "all_day"                   # 周六
-    7: "all_day"                   # 周日
+    1: "all_day"
+    2: "all_day"
+    3: "all_day"
+    4: "all_day"
+    5: "all_day"
+    6: "all_day"
+    7: "all_day"
 
   overlap:
     policy: "error_on_overlap"
